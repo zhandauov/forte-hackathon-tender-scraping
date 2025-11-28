@@ -253,8 +253,7 @@ def parse_lots(soup):
 def parse_techspec_id(session, docs_soup):
 
     REGEX = r'actionModalShowFiles\((.*)\)'
-
-    all_docs = docs_soup.find('table').find_all('tr')
+    all_docs = docs_soup.find_all('table')[-1].find_all('tr')
     for doc in all_docs:
         all_values = doc.find_all('td')
 
@@ -263,21 +262,19 @@ def parse_techspec_id(session, docs_soup):
 
         title = all_values[0].get_text(strip=True)
 
-        if 'техн' not in title.lower() or 'спецификац' not in title.lower():  # looking for technical specifications
-            continue
-        
-        button = doc.find('button')
-        
-        if not button:
-            continue
+        if ('техн' in title.lower()) and ('спецификац' in title.lower()):  # looking for technical specifications
+            button = doc.find('button')
+            
+            if not button:
+                continue
 
-        onclick_value = button.get('onclick', '')
-        match = re.search(REGEX, onclick_value)
-        action_params = None
-        if match:
-            # Извлекаем содержимое скобок (группа 1)
-            techspec_id = match.group(1)
-            break
+            onclick_value = button.get('onclick', '')
+            match = re.search(REGEX, onclick_value)
+            action_params = None
+            if match:
+                # Извлекаем содержимое скобок (группа 1)
+                techspec_id = match.group(1)
+                break
     
     params = techspec_id.split(',')
 
