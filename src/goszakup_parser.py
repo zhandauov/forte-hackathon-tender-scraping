@@ -263,7 +263,7 @@ def parse_techspec_id(session, docs_soup):
 
         title = all_values[0].get_text(strip=True)
 
-        if 'техн' not in title.lower():  # looking for technical specifications
+        if 'техн' not in title.lower() or 'спецификац' not in title.lower():  # looking for technical specifications
             continue
         
         button = doc.find('button')
