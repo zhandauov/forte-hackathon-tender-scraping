@@ -9,7 +9,7 @@
 pip install -r requirements.txt
 ```
 
-2. Создайте файл `.env` и добавьте ваш OpenAI API ключ:
+2. Создайте файл `.env` и добавьте ваш OpenAI API ключ. Новый ключ можно создать в https://platform.openai.com/settings/organization/api-keys:
 ```
 OPENAI_API_KEY=your_api_key_here
 ```
@@ -31,15 +31,6 @@ python server.py
 2. Нажмите кнопку "Сформировать отчёт"
 3. Следите за прогрессом выполнения
 4. После завершения отчёт автоматически отобразится
-
-### Использование через командную строку
-
-Запустите скрипт напрямую:
-```bash
-python main.py
-```
-
-Измените `advert_id_to_parse` в файле `main.py` для парсинга другого объявления.
 
 ## Структура проекта
 
