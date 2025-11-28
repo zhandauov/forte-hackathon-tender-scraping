@@ -5,8 +5,10 @@ import os
 
 load_dotenv()
 
+API_KEY='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'
+
 def get_client():
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    client = OpenAI(api_key=API_KEY)
     return client
 
 def upload_files(client, file_path):
