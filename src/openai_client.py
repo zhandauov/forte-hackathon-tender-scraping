@@ -1,12 +1,12 @@
 import json
 from openai import OpenAI 
 import os
+from dotenv import load_dotenv
 
-
-some_key='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'
+load_dotenv()
 
 def get_client():
-    client = OpenAI(api_key=some_key)
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     return client
 
 def upload_files(client, file_path):
